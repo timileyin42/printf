@@ -7,5 +7,6 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
+void print_buffer(char *writeBuffer, int *buffer_index);
 
 #endif
