@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
  * _printf - simulates of the printf function
@@ -13,8 +14,9 @@ int _printf(const char *format, ...)
 	va_list _printf;
 
 	va_start(_printf, format);
+	int x;
 
-	for (int x = 0; format[x] != '\0'; x++)
+	for x = 0; format[x] != '\0'; x++)
 	{
 		if (format[x] != '%')
 		{
@@ -49,3 +51,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(_printf);
 	return (length);
+}
