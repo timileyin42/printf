@@ -9,6 +9,7 @@
 #define BUFFER_SIZE 1024
 #define BUF_FLUSH -1
 
+#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 /**
  * struct param - Structure to hold various formatting parameters
  *
