@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * binary_decimal - print of decimalnumber to binary.
@@ -17,6 +18,7 @@ int binary_decimal(va_list binary)
 	a = 0;
 	if (c == 0)
 	{
+		char zero = '0';
 		write(STDOUT_FILENO, &zero, 1);
 		return (1);
 	}
