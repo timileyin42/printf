@@ -29,18 +29,18 @@
 */
 typedef struct param
 {
-    unsigned int unsign : 1;
-    unsigned int plus_flag : 1;
-    unsigned int space_flag : 1;
-    unsigned int hashtag_flag : 1;
-    unsigned int zero_flag : 1;
-    unsigned int minus_flag : 1;
+	unsigned int unsign : 1;
+	unsigned int plus_flag : 1;
+	unsigned int space_flag : 1;
+	unsigned int hashtag_flag : 1;
+	unsigned int zero_flag : 1;
+	unsigned int minus_flag : 1;
 
-    unsigned int width;
-    unsigned int percision;
+	unsigned int width;
+	unsigned int percision;
 
-    unsigned int h_modifier : 1;
-    unsigned int l_modifier : 1;
+	unsigned int h_modifier : 1;
+	unsigned int l_modifier : 1;
 } params_t;
 
 /**
@@ -71,5 +71,5 @@ int clone_print(const char *buff, int index);
 unsigned int bu_s(char *fill, char s, unsigned int index);
 int handle_per(va_list x __attribute__((unused)), char *box, unsigned int out);
 int handle_i(va_list arg_int, char *box, unsigned int out);
-void print_non_printable(char *buffer, char c, int *index);
+int print_non_printable(char *buffer, char c, int *index);
 #endif

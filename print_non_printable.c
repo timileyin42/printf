@@ -4,9 +4,11 @@
  *
  * @buffer: buffer where the output is being constructed.
  * @c: The character to be printed.
- * @index: ointer to an integer that keeps track of the current position.
+ * @index: pointer to an integer that keeps track of the current position.
+ *
+ * Return: Always 0 (success)
 */
-void print_non_printable(char *buffer, char c, int *index)
+int print_non_printable(char *buffer, char c, int *index)
 {
 	if (*index + 4 <= BUFFER_SIZE)
 	{
@@ -17,8 +19,9 @@ void print_non_printable(char *buffer, char c, int *index)
 	}
 	else
 	{
-		write_buf(STDOUT_FILENO, buffer, *index);
+		write_buf(c, buffer, *index);
 		*index = 0;
 		print_non_printable(buffer, c, index);
 	}
+	return (0);
 }
