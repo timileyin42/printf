@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdarg.h>
 
+#define BUFFER_SIZE 1024
 
 /**
  * struct param - Structure to hold various formatting parameters
