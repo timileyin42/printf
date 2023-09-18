@@ -40,5 +40,7 @@ typedef struct param
 } params_t;
 
 int _printf(const char *format, ...);
+void print_buffer(char *writeBuffer, int *buffer_index);
+int binary_decimal(va_list binary);
 
 #endif

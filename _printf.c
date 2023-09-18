@@ -1,7 +1,5 @@
 #include "main.h"
-
-#define BUFFER_SIZE 1024
-#define STDOUT_FILENO1
+#include <unistd.h>
 
 /**
  * print_char - printing of a character to standard output
@@ -76,43 +74,45 @@ void print_pointer(char *buffer, void *ptr, int *index)
  *
  * Return: The number of characters to be print.
  */
+
 int _printf(const char *format, ...)
 {
-	va_list _printf;
-	const char *ptr;
 	int length = 0;
+	va_list _printf;
 
 	va_start(_printf, format);
-	for (ptr = format; *ptr != '\0'; ptr++)
+	int x;
+
+	for (x = 0; format[x] != '\0'; x++)
 	{
-		if (*ptr != '%')
+		if (format[x] != '%')
 		{
-			write(STDOUT_FILENO, ptr, 1);
+			write(STDOUT_FILENO, &format[x], 1);
 			length++;
-		}
-		else
+		} else
 		{
-			ptr++;
-			switch (*ptr)
+			x++;
+			if (format[x] == 'c')
 			{
-				case 'c':
-					print_char(_printf);
-					length++;
-					break;
-				case 's':
-					print_string(_printf);
-					length++;
-					break;
-				case 'd':
-				case 'i':
-					print_decimal(_printf);
-					length++;
-					break;
-				default:
-					write(STDOUT_FILENO, "%", 1);
-					write(STDOUT_FILENO, ptr, 1);
-					length = length + 2;
-					break;
+				char c = va_arg(_printf, int);
+
+				write(STDOUT_FILENO, &c, 1);
+				length++;
+			} else if (format[x] == 's')
+			{
+				char *s = va_arg(_printf, char *);
+				int count = 0;
+
+				while (s[count] != '\0')
+				{
+					count++;
+				}
+				write(STDOUT_FILENO, s, count);
+				length = length + count;
+			} else if (format[x] == '%')
+			{
+				write(STDOUT_FILENO, "%", 1);
+				length++;
 			}
 		}
 	}
