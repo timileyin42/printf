@@ -4,55 +4,50 @@
  * _printf - a function that produces output according to a format
  * @format: a character string composed of zero or more directives
  *
- * Description: This function writes output to stdout.
- * It returns the number of characters printed.
+ * Description: This function writes output to stdout,
  *
  * Return: the number of characters printed.
  */
 
-void _printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
-	unsigned int x, length = 0;
-	unsigned index = 0;
+	unsigned int x, num = 0, ind = 0;
 	va_list _printf;
-	int (*function)(va_list, char *, unsigned int);
-	char *output;
+	int (*fun)(va_list, char *, unsigned int);
+	char *s;
 
-	va_start(_printf, format), output = malloc(sizeof(char) * 1024);
-	if (!format || !output || (format[x]) == '%' && !format[x + 1]))
+	va_start(_printf, format), s = malloc(sizeof(char) * 1024);
+	if (!format || !s || (format[x] == '%' && !format[x + 1]))
 		return (-1);
 	if (!format[x])
 		return (0);
-	for (x; format && format [x]; x++)
+	for (x; format && format[x]; x++)
 	{
 		if (format[x] == '%')
 		{
 			if (format[x + 1] == '\0')
-			{
-				buffer_print(output, index), free(output), va_end(_printf);
+			{	write_buf(s, ind), free(s), va_end(_printf);
 				return (-1);
 			}
 			else
-			{
-				function = get_format(format, x + 1);
-				if (function == NULL)
+			{	fun = get_format(format, x + 1);
+				if (fun == NULL)
 				{
 					if (format[x + 1] == ' ' && !format[x + 2])
 						return (-1);
-					buffer_store(output, format[x], index), length++, x--;
+					bu_s(s, format[x], ind), num++, x--;
 				}
 				else
-				{
-					length = length + function(_printf, output, index);
+				{	num += fun(_printf, s, ind);
 					x = x + clone_print(format, x + 1);
 				}
 			} x++;
 		}
 		else
-			buffer_store(output, format[x], index), length++;
-		for (index = length; index > 1024; index = index - 1024)
+			bu_s(s, format[x], ind), num++;
+		for (ind = num; ind > 1024; ind = ind - 1024)
+			;
 	}
-	buffer_print(output, index), free(output), va_end(_printf);
-	return (length);
+	write_buf(s, ind), free(s), va_end(_printf);
+	return (num);
 }
-

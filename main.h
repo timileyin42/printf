@@ -8,28 +8,30 @@
 
 /**
  * struct format - struct for pointet functions
- * @type_arg: specifier
+ * @struct_arg: specifier
  * @s: pointer to the specifier function
  */
 
 typedef struct format
 {
-	char *type_arg;
+	char *struct_arg;
 	int (*s)(va_list, char *, unsigned int);
 } format_get;
 
 int _printf(const char *format, ...);
-int binary_decimal(va_list binary);
-int buffer_print(char *writBuffer, char c, int buffer_index);
-int print_buffer(char *writeBuffer, int buffer_index);
-void handle_char(va_list arg_char, int *length);
+int binary_decimal(va_list binary, char *store, unsigned int output);
+unsigned int bu_s(char *fill, char s, unsigned int index);
+int handle_char(va_list arg_char, char *store, unsigned int output);
 void handle_octal(unsigned int octalValue, int *length);
-void handle_string(va_list string, int *length);
+int handle_string(va_list arg_string, char *store, unsigned int *output);
 void handle_x(va_list args, int *length);
-void handle_p(va_list pointer, int *length);
+int handle_p(va_list pointer, char *store, unsigned int *output);
 void handle_X(va_list args, int *length);
 void handle_S(va_list args, int *length);
 void handle_d(va_list decimal, int *length);
-void handle_i(va_list integers, int *length);
-
+int (*get_format(const char *buff, int index))(va_list, char *, unsigned int);
+int clone_print(const char *buff, int index);
+unsigned int bu_s(char *fill, char s, unsigned int index);
+int handle_per(va_list x __attribute__((unused)), char *box, unsigned int out);
+int handle_i(va_list arg_int, char *box, unsigned int out);
 #endif

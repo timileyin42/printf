@@ -9,13 +9,22 @@
  * printed.
  *
  * @arg_char:  A va_list containing the variadic arguments.
- * @length:    A pointer to an integer representing the length counter.
+ * @store: A pointer to the character.
+ * @output: the charcter to be print out
+ * Return: alwys 1.
  */
 
-void handle_char(va_list arg_char, int *length)
+int handle_char(va_list arg_char, char *store, unsigned int output)
 {
-	char c = va_arg(arg_char, int);
+	/* the character that will be printed */
+	char  = char_to_print;
 
-	write(STDOUT_FILENO, &c, 1);
-	(*length)++;
+	/* get the next argument in the variable list as int and cast */
+	char_to_print = (char) va_arg(arg_char, int);
+
+	/* store the buffer and the output in the bu_store */
+	bu_s(store, char_to_print, output);
+
+	/* return 1 to indicate success */
+	return (1);
 }

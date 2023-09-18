@@ -2,13 +2,13 @@
 
 /**
  * get_format - Get the rigth function to print on the terminal
- * @buffer: The format specifer checker
+ * @buff: The format specifer checker
  * @index: index for argument specifer
  *
  * Return: Pointer to the right function
  */
 
-int (*get_format(const char *buffer, int index))(va_list, char *, unsigned int)
+int (*get_format(const char *buff, int index))(va_list, char *, unsigned int)
 {
 	format_get arrptr[] = {
 		{"d", handle_d.c}
@@ -28,11 +28,11 @@ int (*get_format(const char *buffer, int index))(va_list, char *, unsigned int)
 
 	output = index;
 
-	while (arrptr[x].type_arg)
+	while (arrptr[x].struct_arg)
 	{
-		if (buffer[index] == arrptr[x].type_arg[y])
+		if (buff[index] == arrptr[x].struct_arg[y])
 		{
-			if (arrptr[x].type_arg[y + 1] != '\0')
+			if (arrptr[x].struct_arg[y + 1] != '\0')
 				index++, y++;
 			else
 				break;
