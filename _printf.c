@@ -25,6 +25,52 @@ void print_string(va_list _printf)
 	write(STDOUT_FILENO, str, strlen(str));
 }
 /**
+ * print_non_printable - Helper function to print non-printable char as \xXX.
+ *
+ * @buffer: buffer where the output is being constructed.
+ * @c: The character to be printed.
+ * @index: ointer to an integer that keeps track of the current position.
+*/
+void print_non_printable(char *buffer, char c, int *index)
+{
+	if (*index + 4 <= BUFFER_SIZE)
+	{
+		buffer[(*index)++] = '\\';
+		buffer[(*index)++] = 'x';
+		snprintf(buffer + *index, 3, "%02X", (unsigned char)c);
+		*index += 2;
+	}
+	else
+	{
+		write(STDOUT_FILENO, buffer, *index);
+		*index = 0;
+		print_non_printable(buffer, c, index);
+	}
+}
+
+/**
+ * print_pointer - Helper function to print a pointer in hexadecimal format.
+ *
+ * @buffer: where the output is being constructed.
+ * @ptr: pointer to void that represents the address you want to print.
+ * @index: keeps track of the current position in the buffer.
+*/
+void print_pointer(char *buffer, void *ptr, int *index)
+{
+	if (*index + 16 <= BUFFER_SIZE)
+	{
+		uintptr_t address = (uintptr_t)ptr;
+		snprintf(buffer + *index, 18, "0x%016lx", address);
+		*index += 16;
+	}
+	else
+	{
+		write(STDOUT_FILENO, buffer, *index);
+		*index = 0;
+		print_pointer(buffer, ptr, index);
+	}
+}
+/**
  * _printf - simulates of the printf function
  * @format: The format string
  *
