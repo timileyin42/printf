@@ -8,9 +8,12 @@
 #define PRINT_BUFFER_SIZE 1024
 #define BUFFER_FLUSH -1
 
+#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 /**
  * struct param - Structure to hold various formatting parameters
+ *
  * @unsign: Whether it's an unsigned number
+ *
  * @plus_flag: Whether the plus flag is set
  * @space_flag: Whether the space flag is set
  * @hashtag_flag: Whether the hashtag flag is set
