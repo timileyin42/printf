@@ -7,6 +7,7 @@
 #include <stdarg.h>
 
 #define BUFFER_SIZE 1024
+#define BUF_FLUSH -1
 
 /**
  * struct param - Structure to hold various formatting parameters
