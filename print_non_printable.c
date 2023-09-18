@@ -12,12 +12,12 @@ void print_non_printable(char *buffer, char c, int *index)
 	{
 		buffer[(*index)++] = '\\';
 		buffer[(*index)++] = 'x';
-		snprintf(buffer + *index, 3, "%02X", (unsigned char)c);
+		bu_s(buffer + *index, 3, "%02X", (unsigned char)c);
 		*index += 2;
 	}
 	else
 	{
-		write(STDOUT_FILENO, buffer, *index);
+		write_buf(STDOUT_FILENO, buffer, *index);
 		*index = 0;
 		print_non_printable(buffer, c, index);
 	}
