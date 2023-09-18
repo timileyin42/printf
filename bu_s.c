@@ -13,7 +13,7 @@ unsigned int bu_s(char *fill, char s, unsigned int index)
 {
 	if (index == 1024)
 	{
-		buf_print(fill, index);
+		write_buf(fill, index);
 		index = 0;
 	}
 

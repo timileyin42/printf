@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 					bu_s(s, format[x], ind), num++, x--;
 				}
 				else
-				{	num += fun(_printf, s, ind);
+				{	num = num + fun(_printf, s, ind);
 					x = x + clone_print(format, x + 1);
 				}
 			} x++;
