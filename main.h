@@ -65,7 +65,7 @@ void handle_x(va_list args, int *length);
 int handle_p(va_list pointer, char *store, unsigned int *output);
 void handle_X(va_list args, int *length);
 void handle_S(va_list args, int *length);
-void handle_d(va_list decimal, int *length);
+int handle_d(va_list arg_int, char *box, unsigned int out);
 int (*get_format(const char *buff, int index))(va_list, char *, unsigned int);
 int clone_print(const char *buff, int index);
 unsigned int bu_s(char *fill, char s, unsigned int index);

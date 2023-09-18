@@ -10,7 +10,7 @@
  *
  * Return: zero.
  */
-void handle_octal(unsigned int octalValue, int *length)
+int handle_octal(va_list octal, char *buffer unsigned int *output)
 {
 	unsigned int num = octalValue;
 	char octal_buffer[32];

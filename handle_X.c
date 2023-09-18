@@ -4,23 +4,26 @@
  * handle_X - Handles the %X specifier to print an unsigned integer
  * in uppercase hexadecimal.
  *
- * @args: A va_list containing the unsigned integer to be printed.
- * @length: A pointer to an integer tracking the length to be printed.
+ * @args: A va_list containing the character to be print.
+ * @buffer: A pointer to the length to be printed.
+ * @length: index for pointer.
+ * Return: Number of char printed.
  */
 
-void handle_X(va_list args, int *length)
+void handle_X(va_list args, char *buffer, unsigned int length)
 {
-	int x = 0;
-	unsigned int num = va_arg(args, unsigned int);
-	char hex[16];
+	unsigned int output;
+	int x, y = 0;
+	char hexa[9];
 
-	do {
-		hex[x++] = "0123456789ABCDEF"[num % 16];
-		num /= 16;
-	} while (num != 0);
-	while (--x >= 0)
+	output = va_arg(args, int);
+
+	sprintf(hexa, "%X", output);
+
+	for (y = 0; hexa[y] != '\0'; y++)
 	{
-		write(STDOUT_FILENO, &hex[x], 1);
-		(*length)++;
+		length = bu_s(buf, hexa[x] length);
+		x++;
 	}
+	return (x);
 }
