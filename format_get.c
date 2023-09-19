@@ -20,6 +20,8 @@ int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
 		{"o", handle_octal},
 		{"x", handle_x},
 		{"X", handle_X},
+		{"I", handle_per},
+		{"h", handle_per},
 	};
 
 	int x = 0, y = 0;
