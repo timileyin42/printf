@@ -81,4 +81,5 @@ int handle_unsigned(va_list args, char *store, unsigned int length);
 int handle_x(va_list args, char *buffer, unsigned int length);
 int handle_lng_int(va_list arg_lint, char *store, unsigned int length);
 int handle_rev(va_list arg_str, char *store, unsigned int length);
+int handle_rot(va_list arg_rot, char *store, unsigned int length);
 #endif

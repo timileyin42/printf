@@ -25,6 +25,7 @@ int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
 		{" o", handle_octal},
 		{"lu", handle_lng_int},
 		{"r", handle_rev},
+		{"R", handle_rot13},
 	};
 
 	int x = 0, y = 0;
