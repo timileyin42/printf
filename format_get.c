@@ -1,30 +1,30 @@
 #include "main.h"
 
 /**
- * get_format - Get the rigth function to print on the terminal
+ * format_get - Get the rigth function to print on the terminal
  * @buff: The format specifer checker
  * @index: index for argument specifer
  *
  * Return: Pointer to the right function
  */
 
-int (*get_format(const char *buff, int index))(va_list, char *, unsigned int)
+int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
 {
-	format_get arrptr[] = {
-		{"d", handle_d.c}
-		{"b", binary_decimal.c}
-		{"c", handle_char.c}
-		{"s", handle_string.c}
-		{"i", handle_int.c}
-		{"u", handle_unsigned.c}
-		{"o", handle_octal.c}
-		{"x", handle_x.c}
-		{"X", handle_X.c}
+	format_t arrptr[] = {
+		{"d", handle_d},
+		{"b", binary_decimal},
+		{"c", handle_char},
+		{"s", handle_string},
+		{"i", handle_i},
+		{"u", handle_unsigned},
+		{"o", handle_octal},
+		{"x", handle_x},
+		{"X", handle_X},
 	};
 
-	int x, y = 0;
+	int x = 0, y = 0;
 
-	output;
+	int output;
 
 	output = index;
 

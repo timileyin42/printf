@@ -9,17 +9,18 @@
 
 int clone_print(const char *buff, int index)
 {
-	format_get arrptr[] = {
-		{"b", binary_decimal.c}, {"i", handle_int.c},
-		{"d", handle_d.c}, {"s", handle_string.c},
-		{"u", handle_unsigned.c}, {"o", handle_octal.c},
-		{"c", handle_char.c}, {"x", handle_x.c},
-		{"X", handle_X.c}, {NULL, NULL},
-	}
+	format_t arrptr[] = {
+		{"b", binary_decimal}, {"i", handle_i},
+		{"d", handle_d}, {"s", handle_string},
+		{"u", handle_unsigned}, {"o", handle_octal},
+		{"c", handle_char}, {"x", handle_x},
+		{"X", handle_X}, {NULL, NULL},
+	};
 
-	int x, y = 0;
+	int x = 0;
+	int y = 0;
 
-	output;
+	int output;
 
 	output = index;
 	while (arrptr[x].struct_arg)

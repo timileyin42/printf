@@ -1,4 +1,3 @@
-#include <unistd.h>
 #include "main.h"
 
 /**
@@ -8,7 +7,7 @@
  * Return: number of index printed
  */
 
-int write_buf(char *writeBuffer, int buffer_index)
+int write_buf(char *writeBuffer, unsigned int buffer_index)
 {
 	return (write(STDOUT_FILENO, writeBuffer, buffer_index));
 }

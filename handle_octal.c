@@ -1,28 +1,44 @@
 #include "main.h"
 
 /**
- * handle_octal - Handles the '%o' specifier to print an unsigned integer
- *  as an octal number.
- * @_printf: A va_list containing the argument to print.
- * @length: A pointer to an int tracking the length of char
- * This function takes a va_list that contain unsigned integer,
- * It convert the int to its octal representation and print it out.
- *
- * Return: zero.
+ * handle_octal - prints decimal number in octal
+ * @octal: input number
+ * @store: A pointer pointing to the buffer where char are located
+ * @length: The var holding the index the buffer pointer is pointing to
+ * Return: number of chars printed.
  */
-int handle_octal(va_list octal, char *buffer unsigned int *output)
+int handle_octal(va_list arg_octal, char *store, unsigned int length)
 {
-	unsigned int num = octalValue;
-	char octal_buffer[32];
-	int y = 0;
+	int output, x, y_negative, num, decimal;
+	char *octal_str, *bin;
 
-	do {
-		oct_buffer[y++] = '0' + (num % 8);
-		num /= 8;
-	} while (num != 0);
-	while (--y >= 0)
+	output = va_arg(arg_octal, int);
+	y_negative = 0;
+	if (output == 0)
 	{
-		write(STDOUT_FILENO, &octal_buffer[y], 1);
-		(*length)++;
+		length = bu_s(store, '0', length);
+		return (1);
 	}
+	if (output < 0)
+	{
+		output = (output * -1) - 1;
+		y_negative = 1;
+	}
+	bin = malloc(sizeof(char) * (32 + 1));
+	bin = binary_call(bin, output, y_negative, 32);
+	octal_str = malloc(sizeof(char) * (11 + 1));
+	octal_str = octal_call(bin, octal_str);
+	for (decimal = x = num = 0; octal_str[x]; x++)
+	{
+		if (octal_str[x] != '0' && decimal == 0)
+			decimal = 1;
+		if (decimal)
+		{
+			length = bu_s(store, octal_str[x], length);
+			num++;
+		}
+	}
+	free(bin);
+	free(octal_str);
+	return (num);
 }

@@ -17,10 +17,10 @@ int handle_i(va_list arg_int, char *box, unsigned int out)
 	int store_int, holding_int;
 	unsigned int j, divisor;
 
-	x, y_negative = 0;
+	unsigned int x, y_negative = 0;
 
 	/* get the next argin the var arg_list as int */
-	store_int = va_arg(arg_list, int);
+	store_int = va_arg(arg_int, int);
 	/* initializing isy_negative to 0 */
 	y_negative = 0;
 
@@ -46,7 +46,7 @@ int handle_i(va_list arg_int, char *box, unsigned int out)
 	/* converting each digit of j to char and store it */
 	for (; divisor > 0; divisor = divisor / 10, x++)
 	{
-		out = su_b(store, ((j / divisor) % 10) + '0', out);
+		out = bu_s(box, ((j / divisor) % 10) + '0', out);
 	}
 	/* return the number of digits in store_int plus 1, if negative */
 	return (x + y_negative);

@@ -17,7 +17,7 @@
 int handle_char(va_list arg_char, char *store, unsigned int output)
 {
 	/* the character that will be printed */
-	char  = char_to_print;
+	char char_to_print;
 
 	/* get the next argument in the variable list as int and cast */
 	char_to_print = (char) va_arg(arg_char, int);

@@ -5,38 +5,49 @@
  * of the pointer value.
  * @pointer: A va_list containing the pointer to be converted.
  * @store: The buffertracking the length to be printed.
- * @output: The position in the buffer.
+ * @length: The position in the buffer.
  * Return: The number of character added to the buffer.
  */
-int handle_p(va_list pointer, char *store, unsigned int *output)
+int handle_p(va_list pointer, char *store, unsigned int length)
 {
 	void *ptr_store;
-	char ptr_str;
-	int x = 0;
+	long int output;
+	int x, num, decimal, y_negative;
+	char *ptr_str, *hexa;
+	char nill[] = "(nil)";
 
-	ptr_store = va_arg(pointer, void*);
-
-	/* allocating of memory for the string rep of pointer */
-	ptr_str = (char *) realloc(NULL, sizeof(char) * (strlen(ptr_store) + 1));
-
-	/* checking if memory allocation success */
-	if (ptr_str == NULL)
+	ptr_store = (va_arg(pointer, void *));
+	if (ptr_store == NULL)
 	{
-		/* handle memory allocation failure */
-		return (-1);
+		for (x = 0; nill[x]; x++)
+			length = bu_s(store, nill[x], length);
+		return (5);
 	}
-
-	snprintf(ptr_str, strlen(ptr_store) + 1, "%p", ptr_store);
-
-	/* copy the string rep to the output*/
-	for (x; ptr_str[x] != '\0'; x++)
+	output = (intptr_t)ptr_store;
+	y_negative = 0;
+	if (output < 0)
 	{
-		output = bu_s(store, ptr_str[x], output);
+		output = (output * -1) - 1;
+		y_negative = 1;
 	}
-
-	/* releasing the dynamic allocation memory */
+	ptr_str = malloc(sizeof(char) * (64 + 1));
+	ptr_str = binary_call(ptr_str, output, y_negative, 64);
+	hexa = malloc(sizeof(char) * (16 + 1));
+	hexa = binary_hexa_array(ptr_str, hexa, 0, 16);
+	length = bu_s(store, '0', length);
+	length = bu_s(store, 'x', length);
+	for (decimal = x = num = 0; hexa[x]; x++)
+	{
+		if (hexa[x] != '0' && decimal == 0)
+			decimal = 1;
+		if (decimal)
+		{
+			length = bu_s(store, hexa[x], length);
+			num++;
+		}
+	}
 	free(ptr_str);
+	free(hexa);
 
-	/* return the number of char added to the store */
-	return (strlen(ptr_str));
+	return (num + 2);
 }

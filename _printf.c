@@ -11,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int x, num = 0, ind = 0;
+	unsigned int x = 0, num = 0, ind = 0;
 	va_list _printf;
 	int (*fun)(va_list, char *, unsigned int);
 	char *s;
@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (!format[x])
 		return (0);
-	for (x; format && format[x]; x++)
+	for (; format && format[x]; x++)
 	{
 		if (format[x] == '%')
 		{
@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 				return (-1);
 			}
 			else
-			{	fun = get_format(format, x + 1);
+			{	fun = format_get(format, x + 1);
 				if (fun == NULL)
 				{
 					if (format[x + 1] == ' ' && !format[x + 2])

@@ -6,7 +6,7 @@
  * @s: character to concat
  * @index: argument store in the buffer
  *
- * Return: The updated index 'fill'.
+ * Return: Index of the buffer pointer
  */
 
 unsigned int bu_s(char *fill, char s, unsigned int index)

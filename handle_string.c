@@ -9,7 +9,7 @@
  * Return: always 1
  */
 
-int handle_string(va_list arg_string, char *store, unsigned int *output)
+int handle_string(va_list arg_string, char *store, unsigned int output)
 {
 	/* pointer to the string that will be printed */
 	char *string_to_print;
@@ -35,7 +35,7 @@ int handle_string(va_list arg_string, char *store, unsigned int *output)
 	}
 
 	/* loop through the string_to_print and handle store */
-	for (0; string_to_print[x]; x++)
+	for (x = 0; string_to_print[x]; x++)
 	{
 		output = bu_s(store, string_to_print[x], output);
 	}
