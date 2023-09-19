@@ -1,6 +1,4 @@
-#!/bin/bash
 
-don't display this files
-*_printf
+printf
 
-*main.c
+main.c

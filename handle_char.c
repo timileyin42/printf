@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * handle_char - Print a character from the variadic argument list
@@ -11,7 +12,6 @@
  * @arg_char:  A va_list containing the variadic arguments.
  * @store: A pointer to the character.
  * @output: the charcter to be print out
-
  * Return: alwys 1.
  */
 

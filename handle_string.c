@@ -6,7 +6,6 @@
  * @arg_string: a va_list containing the argumnet to print.
  * @store: A pointer to char tracking the string to be printed.
  * @output: the character containing the string buffer is pointing to
-
  * Return: always 1
  */
 
