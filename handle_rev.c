@@ -28,5 +28,6 @@ int handle_rev(va_list arg_str, char *store, unsigned int length)
 	{
 		length = bu_s(store, str[y], length);
 	}
+
 	return (x);
 }
