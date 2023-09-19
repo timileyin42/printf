@@ -8,20 +8,19 @@
  *
  * Return: Always 0 (success)
 */
-int print_non_printable(char *buffer, char c, int *index)
+int print_non_printable(char *fill, char s, unsigned int index)
 {
-	if (*index + 4 <= BUFFER_SIZE)
+	if (index + 4 <= BUFFER_SIZE)
 	{
-		buffer[(*index)++] = '\\';
-		buffer[(*index)++] = 'x';
-		bu_s(buffer + *index, 3, "%02X", (unsigned char)c);
-		*index += 2;
+		fill[index++] = '\\';
+		fill[index++] = 'x';
+		*index = bu_s(fill, s, *index);
 	}
 	else
 	{
-		write_buf(c, buffer, *index);
+		write_buf(s, fill, *index);
 		*index = 0;
-		print_non_printable(buffer, c, index);
+		print_non_printable(fill, s, index);
 	}
 	return (0);
 }
