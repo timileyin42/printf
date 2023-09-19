@@ -78,5 +78,6 @@ char *binary_call(char *binary, long int output, int neg, int length);
 char *binary_hexa_array(char *fill, char *hexa, int count, int length);
 char *octal_call(char *buffer, char *octal);
 int handle_unsigned(va_list args, char *store, unsigned int length);
- int handle_x(va_list args, char *buffer, unsigned int length);
+int handle_x(va_list args, char *buffer, unsigned int length);
+int handle_lng_int(va_list arg_lint, char *store, unsigned int length);
 #endif
