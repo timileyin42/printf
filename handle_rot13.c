@@ -8,7 +8,7 @@
  * Return: number of chars printed.
 */
 
-int handle_rot(va_list arg_rot, char *store, unsigned int length)
+int handle_rot13(va_list arg_rot, char *store, unsigned int length)
 {
 	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
@@ -21,7 +21,7 @@ int handle_rot(va_list arg_rot, char *store, unsigned int length)
 	{
 		for (; = 0; nill[x]; x++)
 			length = bu_s(store, nill[x], length);
-		return (6)
+		return (6);
 	}
 	for (; = 0; str[x]; x++)
 	{
