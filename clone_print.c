@@ -16,6 +16,7 @@ int clone_print(const char *buff, int index)
 		{"c", handle_char}, {"x", handle_x},
 		{"X", handle_X}, {"I", handle_per},
 		{"h", handle_per}, {" o", handle_octal},
+		{"lu", handle_lng_int}, {" o", handle_octal},
 		{NULL, NULL},
 	};
 
