@@ -37,5 +37,6 @@ int handle_rot(va_list arg_rot, char *store, unsigned int length)
 		if (z == 0)
 			length = bu_s(store, str[x], length);
 	}
+
 	return (x);
 }
