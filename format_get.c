@@ -2,13 +2,13 @@
 
 /**
  * format_get - Get the rigth function to print on the terminal
- * @buff: The format specifer checker
+ * @s: The format specifer checker
  * @index: index for argument specifer
  *
  * Return: Pointer to the right function
  */
 
-int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
+int (*format_get(const char *s, int index))(va_list, char *, unsigned int)
 {
 	format_t arrptr[] = {
 		{"d", handle_d},
@@ -20,12 +20,12 @@ int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
 		{"o", handle_octal},
 		{"x", handle_x},
 		{"X", handle_X},
-		{"R", handle_rot13},
+		{"R", handle_rot},
 		{"r", handle_rev},
 		{"+x", handle_x},
 		{" x", handle_x},
 		{"ld", handle_lng_int},
-		{"lu", handle_lng_int},
+		{"li", handle_lng_int},
 		{"l", handle_per},
 	};
 
@@ -37,7 +37,7 @@ int (*format_get(const char *buff, int index))(va_list, char *, unsigned int)
 
 	while (arrptr[x].struct_arg)
 	{
-		if (buff[index] == arrptr[x].struct_arg[y])
+		if (s[index] == arrptr[x].struct_arg[y])
 		{
 			if (arrptr[x].struct_arg[y + 1] != '\0')
 				index++, y++;

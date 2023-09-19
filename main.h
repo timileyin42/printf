@@ -9,41 +9,6 @@
 #include <stdint.h>
 
 #define BUFFER_SIZE 1024
-#define BUF_FLUSH -1
-
-#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-/**
- * struct param - Structure to hold various formatting parameters
- *
- * @unsign: Whether it's an unsigned number
- *
- * @plus_flag: Whether the plus flag is set
- * @space_flag: Whether the space flag is set
- * @hashtag_flag: Whether the hashtag flag is set
- * @zero_flag: Whether the zero flag is set
- * @minus_flag: Whether the minus flag is set
- *
- * @width: The specified width
- * @percision: The specified precision
- *
- * @h_modifier: Whether the 'h' modifier is used
- * @l_modifier: Whether the 'l' modifier is used
-*/
-typedef struct param
-{
-	unsigned int unsign : 1;
-	unsigned int plus_flag : 1;
-	unsigned int space_flag : 1;
-	unsigned int hashtag_flag : 1;
-	unsigned int zero_flag : 1;
-	unsigned int minus_flag : 1;
-
-	unsigned int width;
-	unsigned int percision;
-
-	unsigned int h_modifier : 1;
-	unsigned int l_modifier : 1;
-} params_t;
 
 /**
  * struct format - struct for pointet functions
@@ -54,7 +19,7 @@ typedef struct param
 typedef struct format
 {
 	char *struct_arg;
-	int (*s)(va_list, char *, unsigned int);
+	int (*f)(va_list, char *, unsigned int);
 } format_t;
 
 int write_buf(char *writeBuffer, unsigned int buffer_index);
@@ -68,8 +33,8 @@ int handle_p(va_list pointer, char *store, unsigned int length);
 int handle_X(va_list args, char *buffer, unsigned int length);
 int handle_S(va_list string, char *store, unsigned int length);
 int handle_d(va_list arg_int, char *box, unsigned int out);
- int (*format_get(const char *buff, int index))(va_list, char *, unsigned int);
-int clone_print(const char *buff, int index);
+int (*format_get(const char *s, int index))(va_list, char *, unsigned int);
+int clone_print(const char *s, int index);
 unsigned int bu_s(char *fill, char s, unsigned int index);
 int handle_per(va_list x __attribute__((unused)), char *box, unsigned int out);
 int handle_i(va_list arg_int, char *box, unsigned int out);
@@ -78,5 +43,8 @@ char *binary_call(char *binary, long int output, int neg, int length);
 char *binary_hexa_array(char *fill, char *hexa, int count, int length);
 char *octal_call(char *buffer, char *octal);
 int handle_unsigned(va_list args, char *store, unsigned int length);
- int handle_x(va_list args, char *buffer, unsigned int length);
+int handle_x(va_list args, char *buffer, unsigned int length);
+int handle_lng_int(va_list arg_lint, char *store, unsigned int length);
+int handle_rev(va_list arg_str, char *store, unsigned int length);
+int handle_rot(va_list arg_rot, char *store, unsigned int length);
 #endif
