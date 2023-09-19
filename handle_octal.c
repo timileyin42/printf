@@ -5,6 +5,7 @@
  * @octal: input number
  * @store: A pointer pointing to the buffer where char are located
  * @length: The var holding the index the buffer pointer is pointing to
+
  * Return: number of chars printed.
  */
 int handle_octal(va_list arg_octal, char *store, unsigned int length)
