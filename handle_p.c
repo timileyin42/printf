@@ -6,6 +6,7 @@
  * @pointer: A va_list containing the pointer to be converted.
  * @store: The buffertracking the length to be printed.
  * @length: The position in the buffer.
+
  * Return: The number of character added to the buffer.
  */
 int handle_p(va_list pointer, char *store, unsigned int length)
