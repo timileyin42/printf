@@ -11,6 +11,7 @@
  * @arg_char:  A va_list containing the variadic arguments.
  * @store: A pointer to the character.
  * @output: the charcter to be print out
+
  * Return: alwys 1.
  */
 
